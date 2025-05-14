@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div>
+        <h1>Formulario 1</h1>
+        <hr>
+        <input type="text" name="txtNombre" id="txtNombre" placeholder="Ingrese Nombre">
+         <input type="text" name="txtNota" id="txtNota" placeholder="Ingrese Nota">
+         <select name="cbxCurso">
+             <option value="0">Seleccione Curso</option>
+             <option value="1">JAVA ORACLE</option>
+            <option value="2">ING. DE SOFTWARE</option>
+            <option value="3">BACKEND</option>
+        </select>
+        <button id="btnProcesar">Procesar</button>
+        <div id="res" style="background-color: lightskyblue;">
+            <!--Esta seccion se rellena con las respuestas de AJAX-->
+            <h1>Pedidiones AJAX</h1>
+        </div>
+    </div>
+</body>
+</html>        
+<script>
+    $('#btnProcesar').click(function(){
+            //implementaccion de un metodo ajax
+            //declaramos la variables necesariosa (3)
+         nombre = $('#txtNombre').val;
+         nota = $('#txtNota').val;
+         curso= $('#cbxCurso').val;
+
+            //nuestra array
+        datos = {'nombre':nombre,'nota':nota,'curso':curso};
+
+            //nesecitamos asignar que estos datos lleguen a ajax
+            //esta Notacion funcion en JSON
+         $.ajax({
+                //conponentes inportantes para ajax
+
+                //que envias
+             data:datos,
+                //donde lo va envit 
+            url:'formulario2.php',
+                //como lo envias
+            type:'get',
+
+                //quien lo recibe
+             success:function(res){
+                $('#res').html(res);
+               }
+
+         });
+    });
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div>
+        <h3>Formulario 3</h3>
+        <hr>
+        <form action="formulario3.php">
+            <input type="text" name="txtF1" id="txtF1" placeholder="Factor 1">
+            <input type="submit" value="Procesar">
+            <div id="res">Tabla</div>
+            <button id="btnProcesar">boton</button>
+        </form>
+    </div>
+    <div id="respuesta" style="background-color: lightblue;">
+        <h1>tala</h1>
+    </div>
+</body>
+</html>
+<script>
+    $('#btnProcesar').click(
+        function(){
+            n = $('#txF1');
+            $.ajax({
+                data:n,
+                url:'formulario3.php',
+                type:get,
+                success:function(res){
+                    $('#respuesta').html(res);
+                }
+            })
+        }
+    );
+</script>
